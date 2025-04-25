@@ -1,0 +1,10 @@
+9 9
+i d a e e g f g b
+h i c i d e b g f
+g b a d h b a f e
+i a f i b h g e d
+d g g f a b b h c
+e c b g c f i f d
+d f e f g i b a b
+f e g h a g c g i
+b g h e d a d i b
