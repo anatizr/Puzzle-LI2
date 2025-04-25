@@ -24,11 +24,11 @@ Este projeto foi realizado no âmbito da cadeira LI2 (Laboratórios de Informát
 
 | Comando        | Descrição                                              |
 |----------------|--------------------------------------------------------|
-| g <ficheiro>   | Guarda o estado atual do jogo num ficheiro.            |
-| l <ficheiro>   | Carrega o estado do jogo a partir de um ficheiro.      |
-| <coordenada>   | Seleciona uma célula (ex: b3).                         |
-| b <coordenada> | Pinta a célula a branco (letra maiúscula).             |
-| r <coordenada> | Risca a célula (substitui por '#').                    |
+| g (ficheiro)   | Guarda o estado atual do jogo num ficheiro.            |
+| l (ficheiro)   | Carrega o estado do jogo a partir de um ficheiro.      |
+| (coordenada)   | Seleciona uma célula (ex: b3).                         |
+| b (coordenada) | Pinta a célula a branco (letra maiúscula).             |
+| r (coordenada) | Risca a célula (substitui por '#').                    |
 | v              | Verifica o estado atual e mostra violações das regras. |
 | a              | Aplica inferências automáticas com base nas regras.    |
 | A              | Repete o comando 'a' até não haver mais alterações.    |
