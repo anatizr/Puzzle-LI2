@@ -1,10 +1,10 @@
 # Puzzle de Letras 
 
-## Contexto 
+## 📚 Contexto 
 
 Este projeto foi realizado no âmbito da cadeira LI2 (Laboratórios de Informática II). Consiste no desenvolvimento de um jogo de puzzle em que o jogador tem de resolver um tabuleiro seguindo regras de lógica e conectividade entre casas.
 
-## Regras do Jogo
+## ✏️ Regras do Jogo
 
 - Em cada linha e coluna só pode haver uma única instância branca (letra maiúscula) de cada símbolo.
 - As restantes repetições desse símbolo devem ser riscadas com o caracter #.
@@ -12,7 +12,7 @@ Este projeto foi realizado no âmbito da cadeira LI2 (Laboratórios de Informát
 - Todas as células brancas devem estar ligadas entre si por um caminho ortogonal contínuo (sem diagonais).
 - O jogador pode aplicar regras de inferência para deduzir automaticamente o estado de certas células com base no estado atual do tabuleiro.
 
-## Etapas de Desenvolvimento
+## ⚙️ Etapas de Desenvolvimento
 
 1. Motor básico de jogo.
 2. Verificação de restrições e funcionalidade de desfazer.
@@ -20,15 +20,15 @@ Este projeto foi realizado no âmbito da cadeira LI2 (Laboratórios de Informát
 4. Sistema de dicas.
 5. Resolução automática do puzzle.
 
-## Comandos 
+## 🕹️ Comandos 
 
 | Comando        | Descrição                                              |
 |----------------|--------------------------------------------------------|
-| g (ficheiro)   | Guarda o estado atual do jogo num ficheiro.            |
-| l (ficheiro)   | Carrega o estado do jogo a partir de um ficheiro.      |
-| (coordenada)   | Seleciona uma célula (ex: b3).                         |
-| b (coordenada) | Pinta a célula a branco (letra maiúscula).             |
-| r (coordenada) | Risca a célula (substitui por '#').                    |
+| g <ficheiro>   | Guarda o estado atual do jogo num ficheiro.            |
+| l <ficheiro>   | Carrega o estado do jogo a partir de um ficheiro.      |
+| <coordenada>   | Seleciona uma célula (ex: b3).                         |
+| b <coordenada> | Pinta a célula a branco (letra maiúscula).             |
+| r <coordenada> | Risca a célula (substitui por '#').                    |
 | v              | Verifica o estado atual e mostra violações das regras. |
 | a              | Aplica inferências automáticas com base nas regras.    |
 | A              | Repete o comando 'a' até não haver mais alterações.    |
