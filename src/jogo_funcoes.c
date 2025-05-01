@@ -19,7 +19,7 @@ void visualizarJogo(Tabuleiro *tab)
     for (int i = 0; i < tab->linhas; i++)
     {
         for (int j = 0; j < tab->colunas; j++)
-            printf("%c", tab->matriz[i][j]);
+            printf("%c ", tab->matriz[i][j]);
 
         printf("\n");
     }
@@ -104,9 +104,11 @@ void guardarHistorico(Historico **historico, Tabuleiro *tab)
     *historico = novo;
 }
 
-// função para verificar as restrições das casas brancas e riscadas
-void verificarRestricoes(Tabuleiro *tab)
+// função para verificar as restrições
+int verificarRestricoes(Tabuleiro *tab)
 {
+    int violacoes = 0;
+
     for (int i = 0; i < tab->linhas; i++)
     {
         for (int j = 0; j < tab->colunas; j++)
@@ -121,6 +123,7 @@ void verificarRestricoes(Tabuleiro *tab)
                     (j < tab->colunas - 1 && tab->matriz[i][j + 1] >= 'a' && tab->matriz[i][j + 1] <= 'z'))
                 {
                     printf("Restrição violada: Casa riscada (%d, %d) tem vizinhos não pintados a branco.\n", i, j);
+                    violacoes = 1;
                 }
             }
             else if (casa >= 'A' && casa <= 'Z')
@@ -131,6 +134,7 @@ void verificarRestricoes(Tabuleiro *tab)
                     if (k != i && tab->matriz[k][j] == casa)
                     {
                         printf("Restrição violada: Casa branca (%d, %d) tem réplica na linha %d.\n", i, j, k);
+                        violacoes = 1;
                     }
                 }
                 for (int k = 0; k < tab->colunas; k++)
@@ -138,9 +142,11 @@ void verificarRestricoes(Tabuleiro *tab)
                     if (k != j && tab->matriz[i][k] == casa)
                     {
                         printf("Restrição violada: Casa branca (%d, %d) tem réplica na coluna %d.\n", i, j, k);
+                        violacoes = 1;
                     }
                 }
             }
         }
     }
+    return violacoes;
 }
