@@ -3,7 +3,7 @@
 
 typedef struct tabuleiro
 {
-    char matriz[20][20];
+    char matriz[26][26];
     int linhas, colunas;
 } Tabuleiro;
 
@@ -21,6 +21,6 @@ void lerFicheiro(Tabuleiro *tab, char *nomeFicheiro);
 void guardarFicheiro(Tabuleiro *tab, char *nomeFicheiro);
 void desfazer(Tabuleiro *tab, Historico **hist);
 void guardarHistorico(Historico **hist, Tabuleiro *tab);
-void verificarRestricoes(Tabuleiro *tab);
+int verificarRestricoes(Tabuleiro *tab);
 
 #endif

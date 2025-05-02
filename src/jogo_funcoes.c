@@ -3,7 +3,7 @@
 
 typedef struct tabuleiro
 {
-    char matriz[20][20];
+    char matriz[26][26];
     int linhas, colunas;
 } Tabuleiro;
 
@@ -104,6 +104,59 @@ void guardarHistorico(Historico **historico, Tabuleiro *tab)
     *historico = novo;
 }
 
+// função para realizar busca em profundidade (DFS)
+void dfs(Tabuleiro *tab, int i, int j, int visitadas[26][26])
+{
+    if (i < 0 || i >= tab->linhas || j < 0 || j >= tab->colunas)
+        return;
+
+    if (visitadas[i][j] || tab->matriz[i][j] == '#')
+        return;
+
+    visitadas[i][j] = 1;
+
+    dfs(tab, i - 1, j, visitadas);
+    dfs(tab, i + 1, j, visitadas);
+    dfs(tab, i, j - 1, visitadas);
+    dfs(tab, i, j + 1, visitadas);
+}
+
+// função para verificar se existe um caminho ortogonal entre as casas brancas (ou potencialmente brancas)
+int verificarCaminho(Tabuleiro *tab)
+{
+    int visitadas[26][26] = {0};
+    int i_inicio = -1, j_inicio = -1;
+
+    for (int i = 0; i < tab->linhas && i_inicio == -1; i++)
+    {
+        for (int j = 0; j < tab->colunas && j_inicio == -1; j++)
+        {
+            if (tab->matriz[i][j] != '#')
+            {
+                i_inicio = i;
+                j_inicio = j;
+            }
+        }
+    }
+    if (i_inicio == -1)
+        return 0;
+
+    dfs(tab, i_inicio, j_inicio, visitadas);
+
+    for (int i = 0; i < tab->linhas; i++)
+    {
+        for (int j = 0; j < tab->colunas; j++)
+        {
+            if (tab->matriz[i][j] != '#' && !visitadas[i][j])
+            {
+                printf("Restrição violada: Não há caminho ortogonal entre a casa (%d, %c) e a casa (%d, %c)\n", i_inicio, 'a' + j_inicio, i, 'a' + j);
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
 // função para verificar as restrições
 int verificarRestricoes(Tabuleiro *tab)
 {
@@ -148,5 +201,8 @@ int verificarRestricoes(Tabuleiro *tab)
             }
         }
     }
+    if (!verificarCaminho(tab))
+        violacoes = 1;
+
     return violacoes;
 }

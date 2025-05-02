@@ -24,17 +24,18 @@ Este projeto foi realizado no âmbito da cadeira LI2 (Laboratórios de Informát
 
 | Comando        | Descrição                                              |
 |----------------|--------------------------------------------------------|
-| g <ficheiro>   | Guarda o estado atual do jogo num ficheiro.            |
-| l <ficheiro>   | Carrega o estado do jogo a partir de um ficheiro.      |
-| <coordenada>   | Seleciona uma célula (ex: b3).                         |
-| b <coordenada> | Pinta a célula a branco (letra maiúscula).             |
-| r <coordenada> | Risca a célula (substitui por '#').                    |
-| v              | Verifica o estado atual e mostra violações das regras. |
-| a              | Aplica inferências automáticas com base nas regras.    |
-| A              | Repete o comando 'a' até não haver mais alterações.    |
-| R              | Resolve automaticamente o puzzle (se possível).        |
-| d              | Desfaz o último comando executado.                     |
-| s              | Sai do jogo.                                           |
+| g (ficheiro)   | Guarda o estado atual do jogo num ficheiro             |
+| l (ficheiro)   | Carrega o estado do jogo a partir de um ficheiro       |
+| (coordenada)   | Formato : número(linha) letra(coluna)  ex : 1a         |
+| b (coordenada) | Pinta a casa a branco (letra maiúscula)                |
+| r (coordenada) | Risca a casa (substitui por '#')                       |
+| v              | Verifica o estado atual e mostra violações das regras  |
+| a              | Aplica inferências automáticas com base nas regras     |
+| A              | Repete o comando 'a' até não haver mais alterações     |
+| R              | Resolve automaticamente o puzzle (se possível)         |
+| d              | Desfaz o último comando executado                      |
+| s              | Sai do jogo                                            |
+| ?              | Mostra todos os comandos possíveis                     |
 
 ## 🛠️ Como Instalar
 

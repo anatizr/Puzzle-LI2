@@ -1,6 +1,6 @@
 5 5
-e c a d c
-d c d e c
-b d d c e
-c d e e b
-a c c b b
+ecadc
+dcdec
+bddce
+cdeeb
+accbb

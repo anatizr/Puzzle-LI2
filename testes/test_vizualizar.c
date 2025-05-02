@@ -38,11 +38,10 @@ void test_vizualizarJogo_normal()
             {'g', 'h', 'i'}}};
 
     const char *esperado[] = {
-        "abc\n",
-        "def\n",
-        "ghi\n",
+        "a b c \n",
+        "d e f \n",
+        "g h i \n",
         NULL};
-
     verificarSaida(&tab, esperado);
 }
 
@@ -67,9 +66,9 @@ void test_vizualizarJogo_simbolos()
             {'D', '#', 'F'}}};
 
     const char *esperado[] = {
-        "A#B\n",
-        "#C#\n",
-        "D#F\n",
+        "A # B \n",
+        "# C # \n",
+        "D # F \n",
         NULL};
 
     verificarSaida(&tab, esperado);

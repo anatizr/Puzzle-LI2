@@ -1,21 +1,21 @@
 20 20
- q b n j t j m s f m k d o p h o m a l r  
- l g d h c t m i o n q o j j g b r s p f  
- t l l d j r s q j g m g a c b h o e q i  
- e e r j a b f j s d j q r n n t p i m h  
- a a h k l m e c b l d s p n d q p o m g  
- s r m a q e b g k q n j k l m n g c t d  
- f c a t g r d k b o l a m i q r j e n g  
- i l e d n c k p o q j r d i f h l b h a  
- j p p i h f f s t s c b r k r j b m g d  
- b g j o r q l g h r k m d s e a i n n t  
- k l p f i o h a m d s r e g e h h d r f  
- s m k c f b t g e i a l q n j i h p s k  
- g f h m n i h b e b d k c q n p k s a l  
- m t m k o s p n e c q h k d i e q j f m  
- c m i b n a j f g s r p n o s m s l n q  
- a o r n s c p e a h g t l b i j m m q c  
- m q s c j d k l p a f f c h j n e r i n  
- f n g s m h r c l o b a f e c k e i j o  
- o e m p n n b r c k h s i b a d f q q j  
- r j t r l d o m k e q p s d a c p k d p  
+qbnjtjmsfmkdophomalr
+lgdhctmionqojjgbrspf
+tlldjrsqjgmgacbhoeqi
+eerjabfjsdjqrnntpimh
+aahklmecbldspndqpomg
+srmaqebgkqnjklmngctd
+fcatgrdkbolamiqrjeng
+ilednckpoqjrdifhlbha
+jppihffstscbrkrjbmgd
+bgjorqlghrkmdseainnt
+klpfiohamdsregehhdrf
+smkcfbtgeialqnjihpsk
+gfhmnihbebdkcqnpksal
+mtmkospnecqhkdieqjfm
+cmibnajfgsrpnosmslnq
+aornscpeahgtlbijmmqc
+mqscjdklpaffchjnerin
+fngsmhrclobafeckeijo
+oempnnbrckhsibadfqqj
+rjtrldomkeqpsdacpkdp
