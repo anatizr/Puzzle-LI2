@@ -13,7 +13,6 @@ typedef struct historico
     struct historico *anterior;
 } Historico;
 
-// Protótipos das funções
 void visualizarJogo(Tabuleiro *tab);
 void pintarABranco(Tabuleiro *tab, int linha, char coluna);
 void riscar(Tabuleiro *tab, int linha, char coluna);
@@ -22,5 +21,7 @@ void guardarFicheiro(Tabuleiro *tab, char *nomeFicheiro);
 void desfazer(Tabuleiro *tab, Historico **hist);
 void guardarHistorico(Historico **hist, Tabuleiro *tab);
 int verificarRestricoes(Tabuleiro *tab);
+void dfs(Tabuleiro *tab, int linha, int coluna, int visitadas[26][26]);
+int verificarCaminho(Tabuleiro *tab);
 
 #endif

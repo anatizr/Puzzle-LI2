@@ -46,6 +46,12 @@ int main()
         else if (cmd == 's')
         {
             printf("A sair do jogo ...\n");
+            while (hist != NULL)
+            {
+                Historico *temp = hist;
+                hist = hist->anterior;
+                free(temp);
+            }
             exit(0);
         }
         else if (cmd == '?')
@@ -89,14 +95,9 @@ int main()
         }
         else if (cmd == 'v')
             verificarRestricoes(&tab);
+
         else
             printf("Comando inválido.\n");
-    }
-    while (hist != NULL)
-    {
-        Historico *temp = hist;
-        hist = hist->anterior;
-        free(temp);
     }
     return 0;
 }

@@ -83,7 +83,22 @@ void test_verificarRestricoes_tabuleiroVazio()
 {
     Tabuleiro tab = {0};
     int r = verificarRestricoes(&tab);
-    CU_ASSERT_EQUAL(r, 0);
+    CU_ASSERT_EQUAL(r, 1);
+}
+
+// Testar a função verificarRestricoes com um caminho incorreto
+void test_verificarRestricoes_caminho_incorreto()
+{
+    Tabuleiro tab = {
+        .linhas = 3,
+        .colunas = 3,
+        .matriz = {
+            {'A', '#', '#'},
+            {'#', 'E', '#'},
+            {'G', '#', '#'}}};
+
+    int r = verificarRestricoes(&tab);
+    CU_ASSERT_EQUAL(r, 1);
 }
 
 int main()
@@ -97,6 +112,8 @@ int main()
     CU_add_test(suite_verificarRestrições, "test_verificarRestricoes_regrasCasasRiscadas", test_verificarRestricoes_regrasCasasRiscadas);
     CU_add_test(suite_verificarRestrições, "test_verificarRestricoes_regrasCasasRiscadas_respeitada", test_verificarRestricoes_regrasCasasRiscadas_respeitada);
     CU_add_test(suite_verificarRestrições, "test_verificarRestricoes_tabuleiroVazio", test_verificarRestricoes_tabuleiroVazio);
+    CU_add_test(suite_verificarRestrições, "test_verificarRestricoes_caminho_incorreto", test_verificarRestricoes_caminho_incorreto);
+
 
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();

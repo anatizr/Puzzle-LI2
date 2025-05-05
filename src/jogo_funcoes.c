@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> // para malloc e free
+#include <stdlib.h>
 
 typedef struct tabuleiro
 {
@@ -105,20 +105,20 @@ void guardarHistorico(Historico **historico, Tabuleiro *tab)
 }
 
 // função para realizar busca em profundidade (DFS)
-void dfs(Tabuleiro *tab, int i, int j, int visitadas[26][26])
+void dfs(Tabuleiro *tab, int linha, int coluna, int visitadas[26][26])
 {
-    if (i < 0 || i >= tab->linhas || j < 0 || j >= tab->colunas)
+    if (linha < 0 || linha >= tab->linhas || coluna < 0 || coluna >= tab->colunas)
         return;
 
-    if (visitadas[i][j] || tab->matriz[i][j] == '#')
+    if (visitadas[linha][coluna] || tab->matriz[linha][coluna] == '#')
         return;
 
-    visitadas[i][j] = 1;
+    visitadas[linha][coluna] = 1;
 
-    dfs(tab, i - 1, j, visitadas);
-    dfs(tab, i + 1, j, visitadas);
-    dfs(tab, i, j - 1, visitadas);
-    dfs(tab, i, j + 1, visitadas);
+    dfs(tab, linha - 1, coluna, visitadas);
+    dfs(tab, linha + 1, coluna, visitadas);
+    dfs(tab, linha, coluna - 1, visitadas);
+    dfs(tab, linha, coluna + 1, visitadas);
 }
 
 // função para verificar se existe um caminho ortogonal entre as casas brancas (ou potencialmente brancas)
@@ -139,7 +139,7 @@ int verificarCaminho(Tabuleiro *tab)
         }
     }
     if (i_inicio == -1)
-        return 0;
+        return 1;
 
     dfs(tab, i_inicio, j_inicio, visitadas);
 
@@ -167,6 +167,7 @@ int verificarRestricoes(Tabuleiro *tab)
         for (int j = 0; j < tab->colunas; j++)
         {
             char casa = tab->matriz[i][j];
+            
             if (casa == '#')
             {
                 // verificar se todas as casas vizinhas (ortogonais) estão pintadas a branco
@@ -201,7 +202,7 @@ int verificarRestricoes(Tabuleiro *tab)
             }
         }
     }
-    if (!verificarCaminho(tab))
+    if (verificarCaminho(tab))
         violacoes = 1;
 
     return violacoes;
