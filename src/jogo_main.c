@@ -66,10 +66,10 @@ int main()
             printf("| b <coordenada> | Pinta a célula a branco (letra maiúscula).             |\n");
             printf("| r <coordenada> | Risca a célula (substitui por '#').                    |\n");
             printf("| v              | Verifica o estado atual e mostra violações das regras. |\n");
-            // printf("| a              | Aplica inferências automáticas com base nas regras.    |\n");
-            // printf("| A              | Repete o comando 'a' até não haver mais alterações.    |\n");
+            printf("| a              | Aplica inferências automáticas com base nas regras.    |\n");
+            printf("| A              | Repete o comando 'a' até não haver mais alterações.    |\n");
             // printf("| R              | Resolve automaticamente o puzzle (se possível).        |\n");
-            // printf("| d              | Desfaz o último comando executado.                     |\n");
+            printf("| d              | Desfaz o último comando executado.                     |\n");
             printf("| s              | Sai do jogo.                                           |\n");
             printf("| ?              | Mostra esta ajuda.                                     |\n");
             printf("|----------------|--------------------------------------------------------|\n\n");
@@ -95,7 +95,21 @@ int main()
         }
         else if (cmd == 'v')
             verificarRestricoes(&tab);
-
+        else if (cmd == 'a')
+        {
+            guardarHistorico(&hist, &tab);
+            if (ajudar(&tab, &hist))
+                printf("Inferências aplicadas com sucesso!\n");
+            else
+                printf("Nenhuma inferência possível foi encontrada.\n");
+        }
+        else if (cmd == 'A')
+        {
+            guardarHistorico(&hist, &tab);
+            ajudarRepetidamente(&tab, &hist);
+            printf("Todas as inferências possíveis foram aplicadas!\n");
+        }
+        // else if (cmd == 'R')
         else
             printf("Comando inválido.\n");
     }
