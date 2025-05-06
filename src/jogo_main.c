@@ -68,7 +68,7 @@ int main()
             printf("| v              | Verifica o estado atual e mostra violações das regras. |\n");
             printf("| a              | Aplica inferências automáticas com base nas regras.    |\n");
             printf("| A              | Repete o comando 'a' até não haver mais alterações.    |\n");
-            // printf("| R              | Resolve automaticamente o puzzle (se possível).        |\n");
+            printf("| R              | Resolve automaticamente o puzzle (se possível).        |\n");
             printf("| d              | Desfaz o último comando executado.                     |\n");
             printf("| s              | Sai do jogo.                                           |\n");
             printf("| ?              | Mostra esta ajuda.                                     |\n");
@@ -109,7 +109,15 @@ int main()
             ajudarRepetidamente(&tab, &hist);
             printf("Todas as inferências possíveis foram aplicadas!\n");
         }
-        // else if (cmd == 'R')
+        else if (cmd == 'R')
+        {
+            guardarHistorico(&hist, &tab);
+            ajudarRepetidamente(&tab, &hist);
+            if (solve(&tab, 0, 0))
+                printf("Puzzle resolvido com sucesso!\n");
+            else
+                printf("Não foi possível resolver o puzzle.\n");
+        }
         else
             printf("Comando inválido.\n");
     }

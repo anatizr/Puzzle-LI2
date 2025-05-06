@@ -28,5 +28,6 @@ int letraIgual_mesmaLinhaColuna(Tabuleiro *tab, int linha, int coluna);
 int isolaCasas(Tabuleiro *tab, int linha, int coluna);
 int ajudar(Tabuleiro *tab, Historico **hist);
 void ajudarRepetidamente(Tabuleiro *tab, Historico **hist);
+int solve(Tabuleiro *tab, int linha, int coluna);
 
 #endif

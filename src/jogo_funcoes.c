@@ -209,8 +209,7 @@ int verificarRestricoes(Tabuleiro *tab)
     return violacoes;
 }
 
-// função auxiliar que verifica se a casa tem algum vizinho riscado
-// obj : pintar de branco todas as casas vizinhas (ortogonais) de uma casa riscada
+// função auxiliar que verifica se uma casa tem algum vizinho riscado
 int vizinhoRiscado(Tabuleiro *tab, int linha, int coluna)
 {
     if (linha > 0 && tab->matriz[linha - 1][coluna] == '#')
@@ -226,7 +225,6 @@ int vizinhoRiscado(Tabuleiro *tab, int linha, int coluna)
 }
 
 // função auxiliar que verifica se há alguma casa (minuscula ou maiuscula) com a mesma letra na linha ou coluna
-// obj : riscar todas as letras iguais a uma letra branca na mesma linha ou coluna
 int letraIgual_mesmaLinhaColuna(Tabuleiro *tab, int linha, int coluna)
 {
     char letra = tab->matriz[linha][coluna];
@@ -234,14 +232,14 @@ int letraIgual_mesmaLinhaColuna(Tabuleiro *tab, int linha, int coluna)
     for (int j = 0; j < tab->colunas; j++)
     {
         if (j != coluna &&
-            ((tab->matriz[linha][j] == letra) || (tab->matriz[linha][j] + ('a' - 'A') == letra)))
+            ((tab->matriz[linha][j] == letra) || (tab->matriz[linha][j] == toupper(letra))))
             return 1;
     }
 
     for (int i = 0; i < tab->linhas; i++)
     {
         if (i != linha &&
-            ((tab->matriz[i][coluna] == letra) || (tab->matriz[i][coluna] + ('a' - 'A') == letra)))
+            ((tab->matriz[i][coluna] == letra) || (tab->matriz[i][coluna] == toupper(letra))))
             return 1;
     }
     return 0;
@@ -269,7 +267,6 @@ int casaBrancaIgual_mesmaLinhaColuna(Tabuleiro *tab, int linha, int coluna)
 }
 
 // função auxiliar que verifica se riscar a casa isolaria outras casas brancas
-// obj : pintar de branco uma casa quando seria impossível que esta fosse riscada por isolar casas brancas
 int isolaCasas(Tabuleiro *tab, int linha, int coluna)
 {
     Tabuleiro temp = *tab;
@@ -353,7 +350,7 @@ int ajudar(Tabuleiro *tab, Historico **historico)
     return alteracoes;
 }
 
-// função para implementar o comando 'a' repetidamente até não haver mais alterações
+// função para implementar o comando 'A'
 void ajudarRepetidamente(Tabuleiro *tab, Historico **historico)
 {
     int alteracoes;
@@ -361,4 +358,99 @@ void ajudarRepetidamente(Tabuleiro *tab, Historico **historico)
     {
         alteracoes = ajudar(tab, historico);
     } while (alteracoes);
+}
+
+// função auxiliar, verificarCaminho sem printf
+int verificarCaminhoSilencioso(Tabuleiro *tab)
+{
+    int visitadas[26][26] = {0};
+    int i_inicio = -1, j_inicio = -1;
+
+    for (int i = 0; i < tab->linhas && i_inicio == -1; i++)
+    {
+        for (int j = 0; j < tab->colunas && j_inicio == -1; j++)
+        {
+            if (tab->matriz[i][j] != '#')
+            {
+                i_inicio = i;
+                j_inicio = j;
+            }
+        }
+    }
+    if (i_inicio == -1)
+        return 1;
+
+    dfs(tab, i_inicio, j_inicio, visitadas);
+
+    for (int i = 0; i < tab->linhas; i++)
+    {
+        for (int j = 0; j < tab->colunas; j++)
+        {
+            if (tab->matriz[i][j] != '#' && !visitadas[i][j])
+            {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+int serValido(Tabuleiro *tab, int linha, int coluna, char temp)
+{
+    int valido = 1;
+    char original = tab->matriz[linha][coluna];
+    tab->matriz[linha][coluna] = temp;
+
+    if (temp == '#')
+    {
+        if (vizinhoRiscado(tab, linha, coluna) && !verificarCaminhoSilencioso(tab))
+            valido = 0;
+    }
+    else if (temp >= 'A' && temp <= 'Z')
+    {
+        if (casaBrancaIgual_mesmaLinhaColuna(tab, linha, coluna))
+            valido = 0;
+    }
+    if (valido && verificarCaminhoSilencioso(tab))
+        valido = 0;
+
+    tab->matriz[linha][coluna] = original;
+    return valido;
+}
+
+int solve(Tabuleiro *tab, int linha, int coluna)
+{
+    if (linha == tab->linhas)
+        return 1;
+
+    else if (coluna == tab->colunas)
+        return solve(tab, linha + 1, 0);
+
+    else if (!(tab->matriz[linha][coluna] >= 'a' && tab->matriz[linha][coluna] <= 'z'))
+        return solve(tab, linha, coluna + 1);
+
+    else
+    {
+        if (serValido(tab, linha, coluna, toupper(tab->matriz[linha][coluna])))
+        {
+            char original = tab->matriz[linha][coluna];
+            tab->matriz[linha][coluna] = toupper(tab->matriz[linha][coluna]);
+
+            if (solve(tab, linha, coluna + 1))
+                return 1;
+
+            tab->matriz[linha][coluna] = original;
+        }
+        if (serValido(tab, linha, coluna, '#'))
+        {
+            char original = tab->matriz[linha][coluna];
+            tab->matriz[linha][coluna] = '#';
+
+            if (solve(tab, linha, coluna + 1))
+                return 1;
+
+            tab->matriz[linha][coluna] = original;
+        }
+    }
+    return 0;
 }
