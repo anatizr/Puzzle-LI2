@@ -2,7 +2,7 @@
 
 #include <CUnit/CUnit.h>
 #include <CUnit/Basic.h>
-#include "jogo.h"
+#include "lerGuardar.h"
 
 // Testar a função lerFicheiro num caso normal
 void test_lerFicheiro_normal()

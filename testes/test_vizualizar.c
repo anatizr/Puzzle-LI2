@@ -2,7 +2,7 @@
 
 #include <CUnit/CUnit.h>
 #include <CUnit/Basic.h>
-#include "jogo.h"
+#include "base.h"
 
 // Função auxiliar para verificar a saída
 void verificarSaida(Tabuleiro *tab, const char *esperado[])

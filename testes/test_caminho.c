@@ -2,7 +2,7 @@
 
 #include <CUnit/CUnit.h>
 #include <CUnit/Basic.h>
-#include "jogo.h"
+#include "caminho.h"
 
 // Testar função dfs num caso normal
 void test_dfs_normal()

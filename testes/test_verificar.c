@@ -2,7 +2,7 @@
 
 #include <CUnit/CUnit.h>
 #include <CUnit/Basic.h>
-#include "jogo.h"
+#include "verificar.h"
 
 // Testar a função verificarRestricoes num caso normal
 void test_verificarRestricoes()
@@ -113,7 +113,6 @@ int main()
     CU_add_test(suite_verificarRestrições, "test_verificarRestricoes_regrasCasasRiscadas_respeitada", test_verificarRestricoes_regrasCasasRiscadas_respeitada);
     CU_add_test(suite_verificarRestrições, "test_verificarRestricoes_tabuleiroVazio", test_verificarRestricoes_tabuleiroVazio);
     CU_add_test(suite_verificarRestrições, "test_verificarRestricoes_caminho_incorreto", test_verificarRestricoes_caminho_incorreto);
-
 
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();

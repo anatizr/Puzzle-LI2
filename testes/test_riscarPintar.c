@@ -2,7 +2,7 @@
 
 #include <CUnit/CUnit.h>
 #include <CUnit/Basic.h>
-#include "jogo.h"
+#include "base.h"
 
 // Testar a função pintarABranco num caso normal
 void test_pintarABranco()

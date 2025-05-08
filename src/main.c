@@ -97,22 +97,20 @@ int main()
             verificarRestricoes(&tab);
         else if (cmd == 'a')
         {
-            guardarHistorico(&hist, &tab);
-            if (ajudar(&tab, &hist))
+            if (ajudar(&tab))
                 printf("Inferências aplicadas com sucesso!\n");
             else
                 printf("Nenhuma inferência possível foi encontrada.\n");
         }
         else if (cmd == 'A')
         {
-            guardarHistorico(&hist, &tab);
-            ajudarRepetidamente(&tab, &hist);
+            ajudarRepetidamente(&tab);
             printf("Todas as inferências possíveis foram aplicadas!\n");
         }
         else if (cmd == 'R')
         {
-            guardarHistorico(&hist, &tab);
-            ajudarRepetidamente(&tab, &hist);
+            tecnicas(&tab);
+            ajudarRepetidamente(&tab);
             if (solve(&tab, 0, 0))
                 printf("Puzzle resolvido com sucesso!\n");
             else

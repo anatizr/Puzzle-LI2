@@ -2,7 +2,8 @@
 
 #include <CUnit/CUnit.h>
 #include <CUnit/Basic.h>
-#include "jogo.h"
+#include "estrutura.h"
+#include "desfazer.h"
 
 // Testar a função desfazer com tabuleiro vazio, sem histórico
 void test_desfazer_vazio()
