@@ -11,7 +11,15 @@ int main()
     char coluna, cmd;
 
     printf("\nBem vindo ao Jogo de Puzzle !\n\n");
-    printf("Escolha um nível para jogar:\n1 - tabuleiro 5x5\n2 - tabuleiro 9x9\n3 - tabuleiro 20x20\n4 - tabuleiro 26x26\n\n");
+    printf("Escolha um nível para jogar:\n");
+    printf("|-------|-----------------|\n");
+    printf("| Nível | Tabuleiro       |\n");
+    printf("|-------|-----------------|\n");
+    printf("|  1    | tabuleiro 5x5   |\n");
+    printf("|  2    | tabuleiro 9x9   |\n");
+    printf("|  3    | tabuleiro 20x20 |\n");
+    printf("|  4    | tabuleiro 26x26 |\n");
+    printf("|-------|-----------------|\n\n");
     int nivel;
     scanf("%d", &nivel);
     if (nivel == 1)
@@ -36,7 +44,7 @@ int main()
         scanf(" %c", &cmd); // tem um espaço antes do %c
         if (cmd == 'b' || cmd == 'r')
         {
-            scanf("%d %c", &linha, &coluna);
+            scanf(" %c %d", &coluna, &linha);
             guardarHistorico(&hist, &tab);
             if (cmd == 'b')
                 pintarABranco(&tab, linha, coluna);
@@ -114,7 +122,41 @@ int main()
             if (solve(&tab, 0, 0))
                 printf("Puzzle resolvido com sucesso!\n");
             else
-                printf("Não foi possível resolver o puzzle.\n");
+            {
+                if (nivel == 1)
+                {
+                    lerFicheiro(&tab, "tabuleiros/tab1.txt");
+                    tecnicas(&tab);
+                    ajudarRepetidamente(&tab);
+                    if (solve(&tab, 0, 0))
+                        printf("Puzzle resolvido com sucesso!\n");
+                }
+                if (nivel == 2)
+                {
+                    lerFicheiro(&tab, "tabuleiros/tab2.txt");
+                    tecnicas(&tab);
+                    ajudarRepetidamente(&tab);
+                    if (solve(&tab, 0, 0))
+                        printf("Puzzle resolvido com sucesso!\n");
+                }
+                if (nivel == 3)
+                {
+                    lerFicheiro(&tab, "tabuleiros/tab3.txt");
+                    tecnicas(&tab);
+                    ajudarRepetidamente(&tab);
+                    if (solve(&tab, 0, 0))
+                        printf("Puzzle resolvido com sucesso!\n");
+                }
+                if (nivel == 4)
+                {
+                    lerFicheiro(&tab, "tabuleiros/tab4.txt");
+                    tecnicas(&tab);
+                    ajudarRepetidamente(&tab);
+                    if (solve(&tab, 0, 0))
+                        printf("Puzzle resolvido com sucesso!\n");
+                }
+                //else printf("Não foi possível resolver o puzzle.\n");
+            }
         }
         else
             printf("Comando inválido.\n");

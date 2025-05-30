@@ -17,7 +17,7 @@ void lerFicheiro(Tabuleiro *tab, char *nomeFicheiro)
             fscanf(ficheiro, " %c", &tab->matriz[i][j]);
 
     fclose(ficheiro);
-    printf("Tabuleiro lido com sucesso, ficheiro %s\n\n", nomeFicheiro);
+    // printf("Tabuleiro lido com sucesso, ficheiro %s\n\n", nomeFicheiro);
 }
 
 // função para guardar o tabuleiro num ficheiro

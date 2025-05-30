@@ -1,4 +1,4 @@
-// TESTES DA FUNÇÃO VIZUALIZARJOGO
+// TESTES DA FUNÇÃO VISUALIZARJOGO
 
 #include <CUnit/CUnit.h>
 #include <CUnit/Basic.h>
@@ -27,7 +27,7 @@ void verificarSaida(Tabuleiro *tab, const char *esperado[])
 }
 
 // Testar a função visualizarJogo num caso normal
-void test_vizualizarJogo_normal()
+void test_visualizarJogo_normal()
 {
     Tabuleiro tab = {
         .linhas = 3,
@@ -46,7 +46,7 @@ void test_vizualizarJogo_normal()
 }
 
 // Testar a função visualizarJogo com um tabuleiro vazio
-void test_vizualizarJogo_vazio()
+void test_visualizarJogo_vazio()
 {
     Tabuleiro tab = {0};
     const char *esperado[] = {NULL};
@@ -55,7 +55,7 @@ void test_vizualizarJogo_vazio()
 }
 
 // Testar a função visualizarJogo com símbolos
-void test_vizualizarJogo_simbolos()
+void test_visualizarJogo_simbolos()
 {
     Tabuleiro tab = {
         .linhas = 3,
@@ -78,10 +78,10 @@ int main()
 {
     CU_initialize_registry();
 
-    CU_pSuite suite_vizualizarJogo = CU_add_suite("Teste de Visualizar o Jogo", NULL, NULL);
-    CU_add_test(suite_vizualizarJogo, "Teste vizualizar tabuleiro caso normal", test_vizualizarJogo_normal);
-    CU_add_test(suite_vizualizarJogo, "Teste vizualizar tabuleiro vazio", test_vizualizarJogo_vazio);
-    CU_add_test(suite_vizualizarJogo, "Teste vizualizar tabuleiro com símbolos", test_vizualizarJogo_simbolos);
+    CU_pSuite suite_visualizarJogo = CU_add_suite("Teste de Visualizar o Jogo", NULL, NULL);
+    CU_add_test(suite_visualizarJogo, "Teste visualizar tabuleiro caso normal", test_visualizarJogo_normal);
+    CU_add_test(suite_visualizarJogo, "Teste visualizar tabuleiro vazio", test_visualizarJogo_vazio);
+    CU_add_test(suite_visualizarJogo, "Teste visualizar tabuleiro com símbolos", test_visualizarJogo_simbolos);
 
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();

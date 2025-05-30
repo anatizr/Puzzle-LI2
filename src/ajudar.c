@@ -145,5 +145,5 @@ void ajudarRepetidamente(Tabuleiro *tab)
     do
     {
         alteracoes = ajudar(tab);
-    } while (alteracoes); 
+    } while (alteracoes);
 }
